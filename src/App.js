@@ -35,12 +35,20 @@ class App extends React.Component {
       todo: [...this.state.todo, newTodo]
     });
   };
-  
+
+  handleComplete =() => {
+    this.setState({ completed: !this.state.completed });
+  };
+
   render() {
     return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
-      </div>
+      <div className="App">
+        <div className="header">
+          <h1>Todo List</h1>
+          <TodoForm addTodo={this.addTodo} />
+        </div>
+        <TodoList todo={this.state.todo} handleComplete={this.handleComplete} />
+     </div>
     );
   }
 }
